@@ -1,0 +1,27 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract StarAiItaliaInfo {
+    // Informazioni sull'azienda
+    string public nomeAzienda = "StarAi Italia";
+    string public partitaIVA = "02559720970";
+    string public codiceFiscale = "02559720970";
+    string public indirizzo = "Via Calamandrei 24, 52100 Arezzo, Italia";
+    string public email = "info@starai.it";
+    string public telefono = "3245611582";
+    string public sitoWebPrincipale = "http://www.starai.it";
+    string public sitoWebApp = "http://www.staraiapp.com";
+    string public amministratoreDelegato = "Weng Qiumei";
+    string public generalManager = "Jonathan T.F";
+
+    // Verifica delle informazioni aziendali
+    function verificaInformazioniAziendali(string memory _partitaIVA, string memory _codiceFiscale) public view returns (bool) {
+        return (keccak256(abi.encodePacked(partitaIVA)) == keccak256(abi.encodePacked(_partitaIVA))) &&
+               (keccak256(abi.encodePacked(codiceFiscale)) == keccak256(abi.encodePacked(_codiceFiscale)));
+    }
+
+    // Ottenere dettagli completi dell'azienda
+    function ottieniDettagliAzienda() public view returns (string memory, string memory, string memory, string memory, string memory, string memory, string memory, string memory, string memory, string memory) {
+        return (nomeAzienda, partitaIVA, codiceFiscale, indirizzo, email, telefono, sitoWebPrincipale, sitoWebApp, amministratoreDelegato, generalManager);
+    }
+}
